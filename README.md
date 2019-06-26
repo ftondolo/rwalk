@@ -3,7 +3,7 @@
 rwalk
 =====
 
-**This is a fork of pnojai's original repo for the sake of sharing the computational load, this is not necessarily bleeding edge!**
+**This is a fork of pnojai's original repo for the sake of sharing the computational load, this is not necessarily bleeding edge!**<br>
 This package is under development.
 
 This is a minimal build with incomplete documentation.
