@@ -1,7 +1,7 @@
 library(ggplot2)
 library(openxlsx)
 
-input_dir <- "../STKO"           # Input directory
+input_dir <- "./input"           # Input directory
 par_dir <- "./scripts"           # File params need a trackable directory
 
 # File parameters, on GitHub
