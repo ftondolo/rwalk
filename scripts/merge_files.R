@@ -29,7 +29,7 @@ stim_df <- data.frame(animal = character(),
                       electrode = integer())
 
 # Read data
-for (i in 1:(nrow(fils) - 0)) {
+for (i in 38:(nrow(fils) - 0)) {
         print(fils[i, "filename"])
         
         dat <- read_experiment_csv(paste(input_dir, fils[i, "filename"], sep = "/"),
@@ -78,51 +78,51 @@ sum(!ok)
 
 # WT - Pre-AMPH
 dat_merge_wt_pre <- select(stim_df, animal, stim_time_sec, electrode, genotype, stimulus, include) %>%
-        filter(genotype == "wt" & stimulus >= 1 & stimulus <= 3 & include == TRUE & stim_time_sec <= 120) %>%
+        filter(genotype == "syntko" & stimulus >= 1 & include == TRUE & stim_time_sec <= 120) %>%
         group_by(stim_time_sec) %>%
         summarize(mean(electrode))
 dat_merge_wt_pre <- rename(dat_merge_wt_pre, time_sec = stim_time_sec, "electrode" = "mean(electrode)")
 qplot(dat_merge_wt_pre$time_sec, dat_merge_wt_pre$electrode, geom = "line")
-
-# WT - AMPH_06_10
-dat_merge_wt_amph_0610 <- select(stim_df, animal, stim_time_sec, electrode, genotype, stimulus, include) %>%
-        filter(genotype == "wt" & stimulus >= 6 & stimulus <= 10 & include == TRUE & stim_time_sec <= 120) %>%
-        group_by(stim_time_sec) %>%
-        summarize(mean(electrode))
-dat_merge_wt_amph_0610 <- rename(dat_merge_wt_amph_0610, time_sec = stim_time_sec, "electrode" = "mean(electrode)")
-qplot(dat_merge_wt_amph_0610$time_sec, dat_merge_wt_amph_0610$electrode, geom = "line")
-
-# WT - AMPH_16_20
-dat_merge_wt_amph_1620 <- select(stim_df, animal, stim_time_sec, electrode, genotype, stimulus, include) %>%
-        filter(genotype == "wt" & stimulus >= 16 & stimulus <= 20 & include == TRUE & stim_time_sec <= 120) %>%
-        group_by(stim_time_sec) %>%
-        summarize(mean(electrode))
-dat_merge_wt_amph_1620 <- rename(dat_merge_wt_amph_1620, time_sec = stim_time_sec, "electrode" = "mean(electrode)")
-qplot(dat_merge_wt_amph_1620$time_sec, dat_merge_wt_amph_1620$electrode, geom = "line")
-
-# KO - Pre-AMPH
-dat_merge_ko_pre <- select(stim_df, animal, stim_time_sec, electrode, genotype, stimulus, include) %>%
-        filter(genotype == "ko" & stimulus >= 1 & stimulus <= 3 & include == TRUE & stim_time_sec <= 120) %>%
-        group_by(stim_time_sec) %>%
-        summarize(mean(electrode))
-dat_merge_ko_pre <- rename(dat_merge_ko_pre, time_sec = stim_time_sec, "electrode" = "mean(electrode)")
-qplot(dat_merge_ko_pre$time_sec, dat_merge_ko_pre$electrode, geom = "line")
-
-# KO - AMPH_06_10
-dat_merge_ko_amph_0610 <- select(stim_df, animal, stim_time_sec, electrode, genotype, stimulus, include) %>%
-        filter(genotype == "ko" & stimulus >= 6 & stimulus <= 10 & include == TRUE & stim_time_sec <= 120) %>%
-        group_by(stim_time_sec) %>%
-        summarize(mean(electrode))
-dat_merge_ko_amph_0610 <- rename(dat_merge_ko_amph_0610, time_sec = stim_time_sec, "electrode" = "mean(electrode)")
-qplot(dat_merge_ko_amph_0610$time_sec, dat_merge_ko_amph_0610$electrode, geom = "line")
-
-# KO - AMPH_16_20
-dat_merge_ko_amph_1620 <- select(stim_df, animal, stim_time_sec, electrode, genotype, stimulus, include) %>%
-        filter(genotype == "wt" & stimulus >= 16 & stimulus <= 20 & include == TRUE & stim_time_sec <= 120) %>%
-        group_by(stim_time_sec) %>%
-        summarize(mean(electrode))
-dat_merge_ko_amph_1620 <- rename(dat_merge_ko_amph_1620, time_sec = stim_time_sec, "electrode" = "mean(electrode)")
-qplot(dat_merge_ko_amph_1620$time_sec, dat_merge_ko_amph_1620$electrode, geom = "line")
+# 
+# # WT - AMPH_06_10
+# dat_merge_wt_amph_0610 <- select(stim_df, animal, stim_time_sec, electrode, genotype, stimulus, include) %>%
+#         filter(genotype == "wt" & stimulus >= 6 & stimulus <= 10 & include == TRUE & stim_time_sec <= 120) %>%
+#         group_by(stim_time_sec) %>%
+#         summarize(mean(electrode))
+# dat_merge_wt_amph_0610 <- rename(dat_merge_wt_amph_0610, time_sec = stim_time_sec, "electrode" = "mean(electrode)")
+# qplot(dat_merge_wt_amph_0610$time_sec, dat_merge_wt_amph_0610$electrode, geom = "line")
+# 
+# # WT - AMPH_16_20
+# dat_merge_wt_amph_1620 <- select(stim_df, animal, stim_time_sec, electrode, genotype, stimulus, include) %>%
+#         filter(genotype == "wt" & stimulus >= 16 & stimulus <= 20 & include == TRUE & stim_time_sec <= 120) %>%
+#         group_by(stim_time_sec) %>%
+#         summarize(mean(electrode))
+# dat_merge_wt_amph_1620 <- rename(dat_merge_wt_amph_1620, time_sec = stim_time_sec, "electrode" = "mean(electrode)")
+# qplot(dat_merge_wt_amph_1620$time_sec, dat_merge_wt_amph_1620$electrode, geom = "line")
+# 
+# # KO - Pre-AMPH
+# dat_merge_ko_pre <- select(stim_df, animal, stim_time_sec, electrode, genotype, stimulus, include) %>%
+#         filter(genotype == "ko" & stimulus >= 1 & stimulus <= 3 & include == TRUE & stim_time_sec <= 120) %>%
+#         group_by(stim_time_sec) %>%
+#         summarize(mean(electrode))
+# dat_merge_ko_pre <- rename(dat_merge_ko_pre, time_sec = stim_time_sec, "electrode" = "mean(electrode)")
+# qplot(dat_merge_ko_pre$time_sec, dat_merge_ko_pre$electrode, geom = "line")
+# 
+# # KO - AMPH_06_10
+# dat_merge_ko_amph_0610 <- select(stim_df, animal, stim_time_sec, electrode, genotype, stimulus, include) %>%
+#         filter(genotype == "ko" & stimulus >= 6 & stimulus <= 10 & include == TRUE & stim_time_sec <= 120) %>%
+#         group_by(stim_time_sec) %>%
+#         summarize(mean(electrode))
+# dat_merge_ko_amph_0610 <- rename(dat_merge_ko_amph_0610, time_sec = stim_time_sec, "electrode" = "mean(electrode)")
+# qplot(dat_merge_ko_amph_0610$time_sec, dat_merge_ko_amph_0610$electrode, geom = "line")
+# 
+# # KO - AMPH_16_20
+# dat_merge_ko_amph_1620 <- select(stim_df, animal, stim_time_sec, electrode, genotype, stimulus, include) %>%
+#         filter(genotype == "wt" & stimulus >= 16 & stimulus <= 20 & include == TRUE & stim_time_sec <= 120) %>%
+#         group_by(stim_time_sec) %>%
+#         summarize(mean(electrode))
+# dat_merge_ko_amph_1620 <- rename(dat_merge_ko_amph_1620, time_sec = stim_time_sec, "electrode" = "mean(electrode)")
+# qplot(dat_merge_ko_amph_1620$time_sec, dat_merge_ko_amph_1620$electrode, geom = "line")
 
 # Plot and compile results.
 results <- data.frame(genotype = character(),
@@ -145,8 +145,8 @@ fit_region = "fall"
 # WT - Pre-AMPH
 
 # Variables
-genotype <- "WT"
-amphetamine <- "PRE"
+genotype <- "SYNTKO"
+amphetamine <- "CTRL"
 release <- 2.0
 vmax <- 4.8
 km <- 5
@@ -160,7 +160,7 @@ if (nrow(results[results$genotype == genotype & results$amphetamine == amphetami
                         results$amphetamine == amphetamine, ] <- cbind(genotype, amphetamine, release, vmax, km)
 }
 
-compare_pulse(dat = dat_merge_wt_pre, fil = "Wild Type - Pre-AMPH",
+compare_pulse(dat = dat_merge_wt_pre, fil = "Synuclein Triple Knockout - Control",
               vmax = vmax, km = km,
               pulses = pulses,
               pulse_freq = pulse_freq,
@@ -174,169 +174,169 @@ compare_pulse(dat = dat_merge_wt_pre, fil = "Wild Type - Pre-AMPH",
               base_tolerance = base_tolerance,
               plot_duration_sec = plot_duration_sec)
 
-# WT - Post-AMPH 6-10
-
-# Variables
-genotype <- "WT"
-amphetamine <- "POST_06-10"
-release <- 5.5
-vmax <- 4.8
-km <- 24
-base_tolerance <- 0.05
-plot_duration_sec = 50
-
-if (nrow(results[results$genotype == genotype & results$amphetamine == amphetamine, ]) == 0) {
-        results[(nrow(results)+1), ] <- c(genotype, amphetamine, release, vmax, km)
-} else {
-        results[results$genotype == genotype & 
-                        results$amphetamine == amphetamine, ] <- cbind(genotype, amphetamine, release, vmax, km)
-}
-
-compare_pulse(dat = dat_merge_wt_amph_0610, fil = "Wild Type - Post-AMPH 06-10",
-              vmax = vmax, km = km,
-              pulses = pulses,
-              pulse_freq = pulse_freq,
-              release = release,
-              bin_size = bin_size,
-              electrode_distance = electrode_distance,
-              dead_space_distance = dead_space_distance,
-              diffusion_coefficient = diffusion_coefficient,
-              convert_current = convert_current,
-              fit_region = fit_region,
-              base_tolerance = base_tolerance,
-              plot_duration_sec = plot_duration_sec)
-
-# WT - Post-AMPH 16-20
-
-# Variables
-genotype <- "WT"
-amphetamine <- "POST_16-20"
-release <- 4.25
-vmax <- 4.8
-km <- 24
-base_tolerance <- 0.05
-plot_duration_sec = 50
-
-if (nrow(results[results$genotype == genotype & results$amphetamine == amphetamine, ]) == 0) {
-        results[(nrow(results)+1), ] <- c(genotype, amphetamine, release, vmax, km)
-} else {
-        results[results$genotype == genotype & 
-                        results$amphetamine == amphetamine, ] <- cbind(genotype, amphetamine, release, vmax, km)
-}
-
-compare_pulse(dat = dat_merge_wt_amph_1620, fil = "Wild Type - Post-AMPH 16-20",
-              vmax = vmax, km = km,
-              pulses = pulses,
-              pulse_freq = pulse_freq,
-              release = release,
-              bin_size = bin_size,
-              electrode_distance = electrode_distance,
-              dead_space_distance = dead_space_distance,
-              diffusion_coefficient = diffusion_coefficient,
-              convert_current = convert_current,
-              fit_region = fit_region,
-              base_tolerance = base_tolerance,
-              plot_duration_sec = plot_duration_sec)
-
-# ----------------- END OF WILD TYPE -----------------#
-
-# ----------------- BEGIN KNOCKOUT -----------------#
-
-# KO - Pre-AMPH
-
-# Variables
-genotype <- "KO"
-amphetamine <- "PRE"
-release <- 1.55
-vmax <- 4.8
-km <- 5
-base_tolerance <- 0.05
-plot_duration_sec = 10
-
-if (nrow(results[results$genotype == genotype & results$amphetamine == amphetamine, ]) == 0) {
-        results[(nrow(results)+1), ] <- c(genotype, amphetamine, release, vmax, km)
-} else {
-        results[results$genotype == genotype & 
-                        results$amphetamine == amphetamine, ] <- cbind(genotype, amphetamine, release, vmax, km)
-}
-
-compare_pulse(dat = dat_merge_ko_pre, fil = "Knockout - Pre-AMPH",
-              vmax = vmax, km = km,
-              pulses = pulses,
-              pulse_freq = pulse_freq,
-              release = release,
-              bin_size = bin_size,
-              electrode_distance = electrode_distance,
-              dead_space_distance = dead_space_distance,
-              diffusion_coefficient = diffusion_coefficient,
-              convert_current = convert_current,
-              fit_region = fit_region,
-              base_tolerance = base_tolerance,
-              plot_duration_sec = plot_duration_sec)
-
-# KO - Post-AMPH 6-10
-
-# Variables
-genotype <- "KO"
-amphetamine <- "POST_06-10"
-release <- 3.8
-vmax <- 4.8
-km <- 24
-base_tolerance <- 0.05
-plot_duration_sec = 30
-
-if (nrow(results[results$genotype == genotype & results$amphetamine == amphetamine, ]) == 0) {
-        results[(nrow(results)+1), ] <- c(genotype, amphetamine, release, vmax, km)
-} else {
-        results[results$genotype == genotype & 
-                        results$amphetamine == amphetamine, ] <- cbind(genotype, amphetamine, release, vmax, km)
-}
-
-compare_pulse(dat = dat_merge_ko_amph_0610, fil = "Knockout - Post-AMPH 06-10",
-              vmax = vmax, km = km,
-              pulses = pulses,
-              pulse_freq = pulse_freq,
-              release = release,
-              bin_size = bin_size,
-              electrode_distance = electrode_distance,
-              dead_space_distance = dead_space_distance,
-              diffusion_coefficient = diffusion_coefficient,
-              convert_current = convert_current,
-              fit_region = fit_region,
-              base_tolerance = base_tolerance,
-              plot_duration_sec = plot_duration_sec)
-
-# KO - Post-AMPH 16-20
-
-# Variables
-genotype <- "KO"
-amphetamine <- "POST_16-20"
-release <- 4.22
-vmax <- 4.8
-km <- 24
-base_tolerance <- 0.05
-plot_duration_sec = 50
-
-if (nrow(results[results$genotype == genotype & results$amphetamine == amphetamine, ]) == 0) {
-        results[(nrow(results)+1), ] <- c(genotype, amphetamine, release, vmax, km)
-} else {
-        results[results$genotype == genotype & 
-                        results$amphetamine == amphetamine, ] <- cbind(genotype, amphetamine, release, vmax, km)
-}
-
-compare_pulse(dat = dat_merge_ko_amph_1620, fil = "Knockout - Post-AMPH 16-20",
-              vmax = vmax, km = km,
-              pulses = pulses,
-              pulse_freq = pulse_freq,
-              release = release,
-              bin_size = bin_size,
-              electrode_distance = electrode_distance,
-              dead_space_distance = dead_space_distance,
-              diffusion_coefficient = diffusion_coefficient,
-              convert_current = convert_current,
-              fit_region = fit_region,
-              base_tolerance = base_tolerance,
-              plot_duration_sec = plot_duration_sec)
-
-results
-
+# # WT - Post-AMPH 6-10
+# 
+# # Variables
+# genotype <- "WT"
+# amphetamine <- "POST_06-10"
+# release <- 5.5
+# vmax <- 4.8
+# km <- 24
+# base_tolerance <- 0.05
+# plot_duration_sec = 50
+# 
+# if (nrow(results[results$genotype == genotype & results$amphetamine == amphetamine, ]) == 0) {
+#         results[(nrow(results)+1), ] <- c(genotype, amphetamine, release, vmax, km)
+# } else {
+#         results[results$genotype == genotype & 
+#                         results$amphetamine == amphetamine, ] <- cbind(genotype, amphetamine, release, vmax, km)
+# }
+# 
+# compare_pulse(dat = dat_merge_wt_amph_0610, fil = "Wild Type - Post-AMPH 06-10",
+#               vmax = vmax, km = km,
+#               pulses = pulses,
+#               pulse_freq = pulse_freq,
+#               release = release,
+#               bin_size = bin_size,
+#               electrode_distance = electrode_distance,
+#               dead_space_distance = dead_space_distance,
+#               diffusion_coefficient = diffusion_coefficient,
+#               convert_current = convert_current,
+#               fit_region = fit_region,
+#               base_tolerance = base_tolerance,
+#               plot_duration_sec = plot_duration_sec)
+# 
+# # WT - Post-AMPH 16-20
+# 
+# # Variables
+# genotype <- "WT"
+# amphetamine <- "POST_16-20"
+# release <- 4.25
+# vmax <- 4.8
+# km <- 24
+# base_tolerance <- 0.05
+# plot_duration_sec = 50
+# 
+# if (nrow(results[results$genotype == genotype & results$amphetamine == amphetamine, ]) == 0) {
+#         results[(nrow(results)+1), ] <- c(genotype, amphetamine, release, vmax, km)
+# } else {
+#         results[results$genotype == genotype & 
+#                         results$amphetamine == amphetamine, ] <- cbind(genotype, amphetamine, release, vmax, km)
+# }
+# 
+# compare_pulse(dat = dat_merge_wt_amph_1620, fil = "Wild Type - Post-AMPH 16-20",
+#               vmax = vmax, km = km,
+#               pulses = pulses,
+#               pulse_freq = pulse_freq,
+#               release = release,
+#               bin_size = bin_size,
+#               electrode_distance = electrode_distance,
+#               dead_space_distance = dead_space_distance,
+#               diffusion_coefficient = diffusion_coefficient,
+#               convert_current = convert_current,
+#               fit_region = fit_region,
+#               base_tolerance = base_tolerance,
+#               plot_duration_sec = plot_duration_sec)
+# 
+# # ----------------- END OF WILD TYPE -----------------#
+# 
+# # ----------------- BEGIN KNOCKOUT -----------------#
+# 
+# # KO - Pre-AMPH
+# 
+# # Variables
+# genotype <- "KO"
+# amphetamine <- "PRE"
+# release <- 1.55
+# vmax <- 4.8
+# km <- 5
+# base_tolerance <- 0.05
+# plot_duration_sec = 10
+# 
+# if (nrow(results[results$genotype == genotype & results$amphetamine == amphetamine, ]) == 0) {
+#         results[(nrow(results)+1), ] <- c(genotype, amphetamine, release, vmax, km)
+# } else {
+#         results[results$genotype == genotype & 
+#                         results$amphetamine == amphetamine, ] <- cbind(genotype, amphetamine, release, vmax, km)
+# }
+# 
+# compare_pulse(dat = dat_merge_ko_pre, fil = "Knockout - Pre-AMPH",
+#               vmax = vmax, km = km,
+#               pulses = pulses,
+#               pulse_freq = pulse_freq,
+#               release = release,
+#               bin_size = bin_size,
+#               electrode_distance = electrode_distance,
+#               dead_space_distance = dead_space_distance,
+#               diffusion_coefficient = diffusion_coefficient,
+#               convert_current = convert_current,
+#               fit_region = fit_region,
+#               base_tolerance = base_tolerance,
+#               plot_duration_sec = plot_duration_sec)
+# 
+# # KO - Post-AMPH 6-10
+# 
+# # Variables
+# genotype <- "KO"
+# amphetamine <- "POST_06-10"
+# release <- 3.8
+# vmax <- 4.8
+# km <- 24
+# base_tolerance <- 0.05
+# plot_duration_sec = 30
+# 
+# if (nrow(results[results$genotype == genotype & results$amphetamine == amphetamine, ]) == 0) {
+#         results[(nrow(results)+1), ] <- c(genotype, amphetamine, release, vmax, km)
+# } else {
+#         results[results$genotype == genotype & 
+#                         results$amphetamine == amphetamine, ] <- cbind(genotype, amphetamine, release, vmax, km)
+# }
+# 
+# compare_pulse(dat = dat_merge_ko_amph_0610, fil = "Knockout - Post-AMPH 06-10",
+#               vmax = vmax, km = km,
+#               pulses = pulses,
+#               pulse_freq = pulse_freq,
+#               release = release,
+#               bin_size = bin_size,
+#               electrode_distance = electrode_distance,
+#               dead_space_distance = dead_space_distance,
+#               diffusion_coefficient = diffusion_coefficient,
+#               convert_current = convert_current,
+#               fit_region = fit_region,
+#               base_tolerance = base_tolerance,
+#               plot_duration_sec = plot_duration_sec)
+# 
+# # KO - Post-AMPH 16-20
+# 
+# # Variables
+# genotype <- "KO"
+# amphetamine <- "POST_16-20"
+# release <- 4.22
+# vmax <- 4.8
+# km <- 24
+# base_tolerance <- 0.05
+# plot_duration_sec = 50
+# 
+# if (nrow(results[results$genotype == genotype & results$amphetamine == amphetamine, ]) == 0) {
+#         results[(nrow(results)+1), ] <- c(genotype, amphetamine, release, vmax, km)
+# } else {
+#         results[results$genotype == genotype & 
+#                         results$amphetamine == amphetamine, ] <- cbind(genotype, amphetamine, release, vmax, km)
+# }
+# 
+# compare_pulse(dat = dat_merge_ko_amph_1620, fil = "Knockout - Post-AMPH 16-20",
+#               vmax = vmax, km = km,
+#               pulses = pulses,
+#               pulse_freq = pulse_freq,
+#               release = release,
+#               bin_size = bin_size,
+#               electrode_distance = electrode_distance,
+#               dead_space_distance = dead_space_distance,
+#               diffusion_coefficient = diffusion_coefficient,
+#               convert_current = convert_current,
+#               fit_region = fit_region,
+#               base_tolerance = base_tolerance,
+#               plot_duration_sec = plot_duration_sec)
+# 
+# results
+# 
