@@ -14,15 +14,15 @@ if (fil_not_exists) {stop("Input file not found")}
 
 # Pick a file to work on.
 print(fils)
-i <- 41
+i <- 45
 
 fil_params_cur <- fil_params_all[fil_params_all$filename == fils[i], ]
 sample_rate <- head(fil_params_cur$sample_rate, 1) # milliseconds
 dat <- read_experiment_csv(paste(input_dir, fils[i], sep = "/"), sr = sample_rate)
 # Plot the sweep. Manually save it and view.
 qplot(dat$time_sec, dat$electrode, geom = "line")
-lead_dur <- 10.2
-dat_beginning <- dat[dat$time_sec > 8 & dat$time_sec < 50, ]
+lead_dur <- 610
+dat_beginning <- dat[dat$time_sec > 605 & dat$time_sec < 635, ]
 qplot(dat$time_sec[dat$time_sec < lead_dur], dat$electrode[dat$time_sec < lead_dur], geom = "line")
 ggplot(data = dat_beginning) +
         geom_line(aes(x = time_sec, y = electrode)) +
