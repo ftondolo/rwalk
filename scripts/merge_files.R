@@ -29,7 +29,7 @@ stim_df <- data.frame(animal = character(),
                       electrode = integer())
 
 # Read data
-for (i in 38:(nrow(fils) - 0)) {
+for (i in 62:(nrow(fils) - 0)) {
         print(fils[i, "filename"])
         
         dat <- read_experiment_csv(paste(input_dir, fils[i, "filename"], sep = "/"),
@@ -110,7 +110,7 @@ results <- data.frame(genotype = character(),
 
 # Constants
 pulses <- 30
-pulse_freq <- 25
+pulse_freq <- 50
 bin_size <- 2.0
 electrode_distance <- 1000
 dead_space_distance <- 4
@@ -125,7 +125,7 @@ fit_region = "fall"
 # Variables
 genotype <- "SYNTKO"
 amphetamine <- "PRE"
-release <- 1.77
+release <- 0.99
 vmax <- 4.8
 km <- 5
 base_tolerance <- 0.05
@@ -157,7 +157,7 @@ compare_pulse(dat = dat_merge_ko_pre, fil = "Synuclein Triple Knockout - Pre-AMP
 # Variables
 genotype <- "SYNTKO"
 amphetamine <- "POST_06-10"
-release <- 3.8
+release <- 2.15
 vmax <- 4.8
 km <- 24
 base_tolerance <- 0.05
@@ -189,7 +189,7 @@ compare_pulse(dat = dat_merge_ko_amph_0610, fil = "Synuclein Triple Knockout - P
 # Variables
 genotype <- "SYNTKO"
 amphetamine <- "POST_16-20"
-release <- 4.3
+release <- 1.25
 vmax <- 4.8
 km <- 24
 base_tolerance <- 0.05
