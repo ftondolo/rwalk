@@ -15,7 +15,7 @@ Acknowledgements:
 
 -   David Sulzer, Ph.D., Depts. Neurology & Psychiatry, Columbia University, New York, NY. Dept. Neuroscience, New York State Psychiatric Institute.
 
--   pnojai
+-   Jai Jeffryes aka pnojai
 
 Installation
 ------------
