@@ -3,7 +3,6 @@
 rwalk
 =====
 
-**This is a fork of pnojai's original repo for the sake of sharing the computational load, this is not necessarily bleeding edge!**<br>
 This package is under development.
 
 This is a minimal build with incomplete documentation.
@@ -15,6 +14,8 @@ The package rwalk consists of tools for random walks and Schmitz/Sulzer modified
 Acknowledgements:
 
 -   David Sulzer, Ph.D., Depts. Neurology & Psychiatry, Columbia University, New York, NY. Dept. Neuroscience, New York State Psychiatric Institute.
+
+-   pnojai
 
 Installation
 ------------
