@@ -125,7 +125,7 @@ fit_region = "fall"
 # Variables
 genotype <- "SYNTKO"
 amphetamine <- "PRE"
-release <- 0.99
+release <- 1.07
 vmax <- 4.8
 km <- 5
 base_tolerance <- 0.05
@@ -157,7 +157,7 @@ compare_pulse(dat = dat_merge_ko_pre, fil = "Synuclein Triple Knockout - Pre-AMP
 # Variables
 genotype <- "SYNTKO"
 amphetamine <- "POST_06-10"
-release <- 2.15
+release <- 2.97
 vmax <- 4.8
 km <- 24
 base_tolerance <- 0.05
