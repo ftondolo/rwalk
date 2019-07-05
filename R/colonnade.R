@@ -9,7 +9,7 @@ extractor<- function(entirety) {
 }
 
 spider <- function() {
-  files <- list.files(path="./f", pattern="*.csv", full.names=TRUE, recursive=FALSE)
+  files <- list.files(path="./input", pattern="*.csv", full.names=TRUE, recursive=FALSE)
   for (val in files){
     extractor(val)
   }

@@ -76,29 +76,32 @@ for (i in 62:(nrow(fils) - 0)) {
 ok <- complete.cases(stim_df)
 sum(!ok)
 
-# KO - Pre-AMPH
-dat_merge_ko_pre <- select(stim_df, animal, stim_time_sec, electrode, genotype, stimulus, include) %>%
-        filter(genotype == "syntko" & stimulus >= 1 & stimulus <= 3 & include == TRUE & stim_time_sec <= 120) %>%
-        group_by(stim_time_sec) %>%
-        summarize(mean(electrode))
-dat_merge_ko_pre <- rename(dat_merge_ko_pre, time_sec = stim_time_sec, "electrode" = "mean(electrode)")
-qplot(dat_merge_ko_pre$time_sec, dat_merge_ko_pre$electrode, geom = "line")
+# Global variable initialisation
+desired_genotype <- "syntko"
 
-# KO - AMPH_06_10
-dat_merge_ko_amph_0610 <- select(stim_df, animal, stim_time_sec, electrode, genotype, stimulus, include) %>%
-        filter(genotype == "syntko" & stimulus >= 6 & stimulus <= 10 & include == TRUE & stim_time_sec <= 120) %>%
+# Pre-AMPH (1-3)
+dat_merge_pre <- select(stim_df, animal, stim_time_sec, electrode, genotype, stimulus, include) %>%
+        filter(genotype == desired_genotype & stimulus >= 1 & stimulus <= 3 & include == TRUE & stim_time_sec <= 120) %>%
         group_by(stim_time_sec) %>%
         summarize(mean(electrode))
-dat_merge_ko_amph_0610 <- rename(dat_merge_ko_amph_0610, time_sec = stim_time_sec, "electrode" = "mean(electrode)")
-qplot(dat_merge_ko_amph_0610$time_sec, dat_merge_ko_amph_0610$electrode, geom = "line")
+dat_merge_pre <- rename(dat_merge_pre, time_sec = stim_time_sec, "electrode" = "mean(electrode)")
+qplot(dat_merge_pre$time_sec, dat_merge_pre$electrode, geom = "line")
 
-# KO - AMPH_16_20
-dat_merge_ko_amph_1620 <- select(stim_df, animal, stim_time_sec, electrode, genotype, stimulus, include) %>%
-        filter(genotype == "syntko" & stimulus >= 16 & stimulus <= 20 & include == TRUE & stim_time_sec <= 120) %>%
+# AMPH (6-10)
+dat_merge_amph_0610 <- select(stim_df, animal, stim_time_sec, electrode, genotype, stimulus, include) %>%
+        filter(genotype == desired_genotype & stimulus >= 6 & stimulus <= 10 & include == TRUE & stim_time_sec <= 120) %>%
         group_by(stim_time_sec) %>%
         summarize(mean(electrode))
-dat_merge_ko_amph_1620 <- rename(dat_merge_ko_amph_1620, time_sec = stim_time_sec, "electrode" = "mean(electrode)")
-qplot(dat_merge_ko_amph_1620$time_sec, dat_merge_ko_amph_1620$electrode, geom = "line")
+dat_merge_amph_0610 <- rename(dat_merge_amph_0610, time_sec = stim_time_sec, "electrode" = "mean(electrode)")
+qplot(dat_merge_amph_0610$time_sec, dat_merge_amph_0610$electrode, geom = "line")
+
+# AMPH (16-20)
+dat_merge_amph_1620 <- select(stim_df, animal, stim_time_sec, electrode, genotype, stimulus, include) %>%
+        filter(genotype == desired_genotype & stimulus >= 16 & stimulus <= 20 & include == TRUE & stim_time_sec <= 120) %>%
+        group_by(stim_time_sec) %>%
+        summarize(mean(electrode))
+dat_merge_amph_1620 <- rename(dat_merge_amph_1620, time_sec = stim_time_sec, "electrode" = "mean(electrode)")
+qplot(dat_merge_amph_1620$time_sec, dat_merge_amph_1620$electrode, geom = "line")
 
 # Plot and compile results.
 results <- data.frame(genotype = character(),
@@ -123,7 +126,7 @@ fit_region = "fall"
 # SYNTKO - Pre-AMPH
 
 # Variables
-genotype <- "SYNTKO"
+genotype <- desired_genotype
 amphetamine <- "PRE"
 release <- 1.07
 vmax <- 4.8
@@ -138,7 +141,7 @@ if (nrow(results[results$genotype == genotype & results$amphetamine == amphetami
                         results$amphetamine == amphetamine, ] <- cbind(genotype, amphetamine, release, vmax, km)
 }
 
-compare_pulse(dat = dat_merge_ko_pre, fil = "Synuclein Triple Knockout - Pre-AMPH",
+compare_pulse(dat = dat_merge_pre, fil = "Synuclein Triple Knockout - Pre-AMPH",
               vmax = vmax, km = km,
               pulses = pulses,
               pulse_freq = pulse_freq,
@@ -155,7 +158,7 @@ compare_pulse(dat = dat_merge_ko_pre, fil = "Synuclein Triple Knockout - Pre-AMP
 # SYNTKO - Post-AMPH 6-10
 
 # Variables
-genotype <- "SYNTKO"
+genotype <- desired_genotype
 amphetamine <- "POST_06-10"
 release <- 2.97
 vmax <- 4.8
@@ -170,7 +173,7 @@ if (nrow(results[results$genotype == genotype & results$amphetamine == amphetami
                         results$amphetamine == amphetamine, ] <- cbind(genotype, amphetamine, release, vmax, km)
 }
 
-compare_pulse(dat = dat_merge_ko_amph_0610, fil = "Synuclein Triple Knockout - Post-AMPH 06-10",
+compare_pulse(dat = dat_merge_amph_0610, fil = "Synuclein Triple Knockout - Post-AMPH 06-10",
               vmax = vmax, km = km,
               pulses = pulses,
               pulse_freq = pulse_freq,
@@ -187,7 +190,7 @@ compare_pulse(dat = dat_merge_ko_amph_0610, fil = "Synuclein Triple Knockout - P
 # SYNTKO - Post-AMPH 16-20
 
 # Variables
-genotype <- "SYNTKO"
+genotype <- desired_genotype
 amphetamine <- "POST_16-20"
 release <- 1.25
 vmax <- 4.8
@@ -202,7 +205,7 @@ if (nrow(results[results$genotype == genotype & results$amphetamine == amphetami
                         results$amphetamine == amphetamine, ] <- cbind(genotype, amphetamine, release, vmax, km)
 }
 
-compare_pulse(dat = dat_merge_ko_amph_1620, fil = "Synuclein Triple Knockout - Post-AMPH 16-20",
+compare_pulse(dat = dat_merge_amph_1620, fil = "Synuclein Triple Knockout - Post-AMPH 16-20",
               vmax = vmax, km = km,
               pulses = pulses,
               pulse_freq = pulse_freq,
