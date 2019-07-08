@@ -7,7 +7,8 @@ test_that("Data file splits stimuli", {
         win_length_sec <- 119
         
         dat <- read_experiment_csv(fil, sr = sample_rate)
-        dat_list <- split_stims(dat, lead_time_sec = lead_time_sec, win_length_sec = win_length_sec)
+        dat_list <- split_stims(dat, lead_time_sec = lead_time_sec, win_length_sec = win_length_sec,
+                                sr = sample_rate)
         
         expect_equal(length(dat_list), 15)
 })
@@ -20,11 +21,11 @@ test_that("calc_fit() for region = all", {
         
         dat <- read_experiment_csv(fil, sr = sample_rate)
         
-        vmax <- 0
-        km <- .4
+        vmax <- 4.8
+        km <- 2.4
         pulses <- 30
         pulse_freq <- 50
-        release <- 3.05
+        release <- 3.25
         bin_size <- 2.0
         electrode_distance <- 50
         dead_space_distance <- 4
@@ -41,5 +42,6 @@ test_that("calc_fit() for region = all", {
                             convert_current, calibration_current,
                             calibration_concentration)
         
-        expect_equal(calc_fit(mg), 0.7705312, tolerance = 1.0e-6)
+        expect_equal(calc_fit(mg), 0.0127, tolerance = 2.8e-6)
 })
+
