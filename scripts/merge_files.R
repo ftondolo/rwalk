@@ -2,6 +2,8 @@ library(ggplot2)
 library(openxlsx)
 library(dplyr)
 
+library(data.table)
+
 input_dir <- "./input"           # Input directory, on GitHub
 par_dir <- "./scripts"           # File params need a trackable directory
 
@@ -16,6 +18,7 @@ fils <- unique(fil_params_all[ , c("filename", "sample_rate", "animal", "genotyp
 fil_not_exists <- sum(!file.exists(paste(input_dir, fils$filename, sep = "/")))
 if (fil_not_exists) {stop("Input file not found")}
 
+##################################
 # Files for merging.
 print(fils$filename)
 
@@ -29,7 +32,7 @@ stim_df <- data.frame(animal = character(),
                       electrode = integer())
 
 # Read data
-for (i in 62:(nrow(fils) - 0)) {
+for (i in 1:(nrow(fils) - 0)) {
         print(fils[i, "filename"])
         
         dat <- read_experiment_csv(paste(input_dir, fils[i, "filename"], sep = "/"),
@@ -71,6 +74,12 @@ for (i in 62:(nrow(fils) - 0)) {
                 stim_df <- rbind(stim_df, one_stim_df)
         }
 }
+#####################################
+# #STIM_DF WRITING
+# write.csv(stim_df,  file = "MyData.csv")
+# MyData <- fread(file="MyData.csv", header=TRUE, sep=",")
+# write.csv(MyData)
+# write.csv(stim_df)
 
 # Analysis of NA
 ok <- complete.cases(stim_df)
