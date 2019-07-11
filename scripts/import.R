@@ -1,6 +1,7 @@
 library(ggplot2)
 library(openxlsx)
 library(dplyr)
+library(data.table)
 
 input_dir <- "./input"           # Input directory, on GitHub
 par_dir <- "./scripts"           # File params need a trackable directory
@@ -71,4 +72,4 @@ for (i in 1:(nrow(fils) - 0)) {
                 stim_df <- rbind(stim_df, one_stim_df)
         }
 }
-write.csv(stim_df,  file = "stim_df.csv")
+fwrite(stim_df,  file = "stim_df.csv")

@@ -76,7 +76,7 @@ for (i in 1:(nrow(fils) - 0)) {
 }
 #####################################
 # #STIM_DF WRITING
-# write.csv(stim_df,  file = "MyData.csv")
+# fwrite(stim_df,  file = "MyData.csv")
 # MyData <- fread(file="MyData.csv", header=TRUE, sep=",")
 # write.csv(MyData)
 # write.csv(stim_df)
