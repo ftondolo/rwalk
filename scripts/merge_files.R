@@ -32,7 +32,7 @@ stim_df <- data.frame(animal = character(),
                       electrode = integer())
 
 # Read data
-for (i in 62:(nrow(fils) - 0)) {
+for (i in 38:(nrow(fils) - 4)) {
         print(fils[i, "filename"])
         
         dat <- read_experiment_csv(paste(input_dir, fils[i, "filename"], sep = "/"),
