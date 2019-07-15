@@ -1,11 +1,11 @@
 peakrawchecker <- function() {
-  peakfiles <- list.files(path=input_dir, pattern="_peakdetection.csv", full.names=TRUE, recursive=FALSE)
-  rawfiles1 <- list.files(path=input_dir, pattern="*1.csv", full.names=TRUE, recursive=FALSE)
-  rawfiles2 <- list.files(path=input_dir, pattern="*2.csv", full.names=TRUE, recursive=FALSE)
-  rawfiles3 <- list.files(path=input_dir, pattern="*3.csv", full.names=TRUE, recursive=FALSE)
-  rawfiles4 <- list.files(path=input_dir, pattern="*4.csv", full.names=TRUE, recursive=FALSE)
-  rawfiles5 <- list.files(path=input_dir, pattern="*5.csv", full.names=TRUE, recursive=FALSE)
-  rawfiles6 <- list.files(path=input_dir, pattern="*6.csv", full.names=TRUE, recursive=FALSE)
+  peakfiles <- list.files(path=input_dir, pattern="*_peakdetection.csv", full.names=TRUE, recursive=FALSE)
+  rawfiles1 <- list.files(path=input_dir, pattern="*_1.csv", full.names=TRUE, recursive=FALSE)
+  rawfiles2 <- list.files(path=input_dir, pattern="*_2.csv", full.names=TRUE, recursive=FALSE)
+  rawfiles3 <- list.files(path=input_dir, pattern="*_3.csv", full.names=TRUE, recursive=FALSE)
+  rawfiles4 <- list.files(path=input_dir, pattern="*_4.csv", full.names=TRUE, recursive=FALSE)
+  rawfiles5 <- list.files(path=input_dir, pattern="*_5.csv", full.names=TRUE, recursive=FALSE)
+  rawfiles6 <- list.files(path=input_dir, pattern="*_6.csv", full.names=TRUE, recursive=FALSE)
   rawfiles <- c(rawfiles1, rawfiles2, rawfiles3, rawfiles4, rawfiles5, rawfiles6)
   for (val in peakfiles){
     if !(val %in% names(rawfiles)){
@@ -20,7 +20,7 @@ peakrawchecker <- function() {
   return 1
 }
 
-multisweephandler<- function(entirety) {
+multisweephelper<- function(entirety) {
   file <- read.csv(entirety)
   if (length(file)!=1){
     for (x in seq(length(file))){
@@ -34,10 +34,10 @@ multisweephandler<- function(entirety) {
   }
 }
 
-spider <- function() {
+multisweephandler <- function() {
   files <- list.files(path="./input", pattern="*.csv", full.names=TRUE, recursive=FALSE)
   for (val in files){
-    extractor(val)
+    multisweephelper(val)
   }
 }
 
