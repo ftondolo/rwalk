@@ -20,7 +20,7 @@ peakrawchecker <- function() {
   return 1
 }
 
-extractor<- function(entirety) {
+multisweephandler<- function(entirety) {
   file <- read.csv(entirety)
   if (length(file)!=1){
     for (x in seq(length(file))){
