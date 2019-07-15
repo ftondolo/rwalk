@@ -3,8 +3,12 @@ extractor<- function(entirety) {
   if (length(file)!=1){
     for (x in seq(length(file))){
       tmp <-na.omit(file[[x]])
-      write.csv(tmp, paste0(tools::file_path_sans_ext(entirety), '_', x, '.csv'))
+      write.csv(tmp, paste0("./output/", tools::file_path_sans_ext(entirety), '_', x, '.csv'))
     }
+  }
+  else{
+    tmp <-na.omit(file[[x]])
+    write.csv(tmp, paste0("./output/", tools::file_path_sans_ext(entirety), '.csv'))
   }
 }
 
