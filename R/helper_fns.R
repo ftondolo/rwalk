@@ -8,12 +8,12 @@ peakrawchecker <- function() {
   rawfiles6 <- list.files(path=input_dir, pattern="*_6.csv", full.names=TRUE, recursive=FALSE)
   rawfiles <- c(rawfiles1, rawfiles2, rawfiles3, rawfiles4, rawfiles5, rawfiles6)
   for (val in peakfiles){
-    if !(val %in% names(rawfiles)){
+    if !(str_sub(val,1, -17) %in% names(rawfiles)){
       return 0
     }
   }
   for (val in rawfiles){
-    if !(val %in% names(peakfiles)){
+    if !(paste0((str_sub(val, 1, -4)), "_peakdetection.csv") %in% names(peakfiles)){
       return 0
     }
   }
