@@ -253,6 +253,17 @@ electrode_results <- function(rwalk_df, electrode_pos) {
         
 }
 
+max_peak <- function(dat){
+        highest <-dat[[2]][[100]]
+        x<-100
+        for (i in 100:1200){
+                if (highest < dat[[2]][[i]])   {
+                        highest <- dat[[2]][[i]]
+                        x<-i
+                }  
+        }
+        i
+}
 #' Title
 #'
 #' @param dat 
